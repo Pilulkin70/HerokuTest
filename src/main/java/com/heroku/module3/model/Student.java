@@ -40,7 +40,7 @@ public class Student {
         this.dateOfAdmission = dateOfAdmission;
     }
 
-    @Override
+/*    @Override
     public String toString() {
         return "Student{" +
                 "id='" + this.id + '\'' +
@@ -49,6 +49,17 @@ public class Student {
                 ", age=" + this.age +
                 ", dateOfAdmission=" + formatDate() +
                 '}';
+    }*/
+
+    @Override
+    public String toString() {
+        return "('" + id + '\'' +
+                ", '" + firstName + '\'' +
+                ", '" + lastName + '\'' +
+                ", " + age +
+                ", '" + formatDate() + '\'' +
+                ", '" + universityGroup.getId() + '\'' +
+                ')';
     }
 
     private String formatDate() {

@@ -12,8 +12,8 @@ public class FlywayUtil {
                 .baselineOnMigrate(true)
                 .locations("db/migration")
 //                .loadDefaultConfigurationFiles()     //default file name 'flyway.conf'
-                //TODO URL
                 .load();
+        flyway.clean();
         flyway.migrate();
     }
 }

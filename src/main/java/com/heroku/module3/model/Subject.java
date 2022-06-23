@@ -23,12 +23,21 @@ public class Subject {
     @OneToMany(mappedBy = "subject", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Set<Grade> gradeSet;
 
-    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lecturer_id")
     Lecturer lecturer;
 
     public Subject(String code, String name) {
         this.code = code;
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "('" + id + '\'' +
+                ", '" + code + '\'' +
+                ", '" + name + '\'' +
+                ", '" + lecturer.getId() + '\'' +
+                ')';
     }
 }

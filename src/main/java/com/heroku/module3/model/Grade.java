@@ -29,4 +29,13 @@ public class Grade {
     public Grade(int value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "('" + id + '\'' +
+                ", '" + student.getId() + '\'' +
+                ", '" + subject.getId() + '\'' +
+                ", " + value +
+                ')';
+    }
 }

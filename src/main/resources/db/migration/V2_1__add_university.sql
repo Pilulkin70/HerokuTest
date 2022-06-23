@@ -1,1 +1,0 @@
-insert into "university" (id, name) values ('a27889ee-ece1-11ec-8ea0-0242ac120002', 'NewUniversity3')

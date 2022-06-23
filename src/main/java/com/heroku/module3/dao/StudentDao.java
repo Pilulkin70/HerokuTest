@@ -12,18 +12,13 @@ public class StudentDao extends AbstractDao<Student> {
         aClass = Student.class;
     }
 
-    public List<Object[]> getStudentInfo(float minGPA) {
+    public List<Object[]> getStudentInfo(String subjectId, float minGPA) {
         final EntityManager entityManager = HibernateFactoryUtil.getEntityManager();
-/*        final String sqlQuery = "SELECT student.id, student.firstName, student.lastName, student.age, student.dateOfEntrance, Avg(grade.value) AS value_avg " +
-                "FROM student " +
-                "INNER JOIN grade ON student.id = grade.student_id " +
-                "GROUP BY student.id, student.firstName, student.lastName, student.age, student.dateOfEntrance " +
-                "HAVING Avg(grade.value)>" + minGPA +
-                " ORDER BY student.firstName, student.lastName";*/
         final String sqlQuery = "SELECT student.id, Avg(grade.value) " +
                 "FROM student " +
                 "INNER JOIN grade " +
                 "ON student.id = grade.student_id " +
+                "WHERE subject_id = '" + subjectId + "' " +
                 "GROUP BY student.id " +
                 "HAVING Avg(grade.value)>" + minGPA +
                 "";

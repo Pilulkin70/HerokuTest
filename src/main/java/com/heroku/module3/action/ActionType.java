@@ -2,17 +2,24 @@ package com.heroku.module3.action;
 
 
 public enum ActionType {
-    SEARCH_GROUP_FOR_NAME("Искать группу по названию", new EmptyAction()),
-    NUMBER_OF_STUDENT_IN_GROUP("Количество студентов в каждой группе", new EmptyAction()),
-    GPA("Средний балл каждой группы", new EmptyAction()),
-    LECTURER_BY_FIRST_AND_LAST_NAME("Преподавателя по имени или фамилии", new EmptyAction()),
-    WORST_AND_BEST_PERFORMING_SUBJECT("Предмет с самой худшей и самой лучшей успеваемостью", new EmptyAction()),
-    STUDENTS_WITH_GPA_ABOVE_VALUE("Студентов, чей средний балл по конкретному предмету выше заданного значения", new EmptyAction()),
-    STRUCTURE("Показать структуру университета", new EmptyAction()),
-    EXIT("Выход", new Exit());
+    SEARCH_GROUP_FOR_NAME("Search group by name",
+            new FindGroup()),
+    NUMBER_OF_STUDENT_IN_GROUP("Count the number of students in each group",
+            new CountStudentsInGroups()),
+    GPA("Grade point average (GPA) of each group",
+            new GroupGPA()),
+    LECTURER_BY_FIRST_AND_LAST_NAME("Find a lecturer by first or last name",
+            new FindLecturerByName()),
+    WORST_AND_BEST_PERFORMING_SUBJECT("The subject with the worst and best performance",
+            new EmptyAction()),
+    STUDENTS_WITH_GPA_ABOVE_VALUE("Students whose GPA in a particular subject is above a given value",
+            new StudentsWithGPAMoreThenValue()),
+    EXIT("Exit",
+            new Exit());
 
     private final String name;
     private final Action action;
+
     ActionType(String name, Action action) {
         this.name = name;
         this.action = action;

@@ -9,6 +9,10 @@ public class UserInputServices {
         return SCANNER.nextInt();
     }
 
+    public float getFloatFromUser() {
+        return SCANNER.nextFloat();
+    }
+
     public String getStringFromUser() {
         return SCANNER.next();
     }

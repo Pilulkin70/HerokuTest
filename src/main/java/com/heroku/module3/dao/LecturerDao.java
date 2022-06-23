@@ -22,9 +22,9 @@ public class LecturerDao extends AbstractDao {
         final CriteriaQuery<Lecturer> query = criteriaBuilder.createQuery(aClass);
         final Root<Lecturer> from = query.from(aClass);
         final Predicate predicateFirstName =
-                criteriaBuilder.equal(criteriaBuilder.upper(from.get("firstNme")), name.toUpperCase());
+                criteriaBuilder.equal(criteriaBuilder.upper(from.get("firstName")), name.toUpperCase());
         final Predicate predicateLastName =
-                criteriaBuilder.equal(criteriaBuilder.upper(from.get("lastNme")), name.toUpperCase());
+                criteriaBuilder.equal(criteriaBuilder.upper(from.get("lastName")), name.toUpperCase());
         query.select(from).where(criteriaBuilder.or(predicateFirstName, predicateLastName));
         return entityManager.createQuery(query).getResultList();
     }

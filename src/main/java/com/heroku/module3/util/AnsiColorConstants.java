@@ -1,4 +1,4 @@
-package com.heroku.module3.service;
+package com.heroku.module3.util;
 
 public enum AnsiColorConstants {
     ANSI_RESET("\u001B[0m"),

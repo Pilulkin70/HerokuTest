@@ -23,48 +23,27 @@ package com.heroku.module3;
 import com.heroku.module3.action.ActionType;
 import com.heroku.module3.config.FlywayUtil;
 import com.heroku.module3.config.HibernateFactoryUtil;
-import com.heroku.module3.service.*;
 import com.heroku.module3.user.UserInputServices;
 
-import java.util.Random;
-
 public class Main {
-    public static final Random RANDOM = new Random();
+    public static final int MIN_GRADE = 1;
+    public static final int MAX_GRADE = 5;
     public static final UserInputServices INPUT_SERVICES = new UserInputServices();
     public static final String DATE_FORMAT = "dd-MM-yyyy";
-    private static final InfrastructureService infrastructureService = new InfrastructureService();
 
     public static void main(String[] args) {
         HibernateFactoryUtil.init();
-//        FlywayUtil.migrate();
-        infrastructureService.createUniversitiesWithInfrastructure();
-
-/*        while (true) {
+        FlywayUtil.migrate();
+        while (true) {
             doAction();
-        }*/
-
-/*        infrastructureService.createUniversitiesWithInfrastructure();
-        infrastructureService.printUniversityInfrastructure();
-        final Integer minValue = 1;
-        final Integer maxValue = 4;
-        System.out.printf("List of courses with complexity in range from %d to %d:%n", minValue, maxValue);
-        CourseService.printCourseWithComplexityInRange(minValue, maxValue);
-        final Date upToDate = java.sql.Date.valueOf(LocalDate.of(1999, 1, 1));
-        final Double minExperience = 4.2;
-        System.out.printf("\nList of curators born before %s and with more than %.2f experience:%n",
-                new SimpleDateFormat(DATE_FORMAT).format(upToDate), minExperience);
-        CuratorService.printCuratorBornBeforeAndWithExperienceGreatThan(upToDate, minExperience);
-        System.out.println("\nRandom student info:");
-        StudentService.printStudentInfo(StudentService.getRandomStudent());
-        System.out.println("\nGroups summary:");
-        UniversityGroupService.printGroupSummary();*/
+        }
     }
 
     private static void doAction() {
         final ActionType[] values = ActionType.values();
-        int number = -1;
+        int number;
         do {
-            System.out.println("Выберите ваше действие: ");
+            System.out.println("Choose your action: ");
             for (int i = 0; i < values.length; i++) {
                 System.out.printf("%d) %s%n", i, values[i]);
             }

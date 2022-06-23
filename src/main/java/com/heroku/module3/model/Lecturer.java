@@ -27,4 +27,14 @@ public class Lecturer {
         this.lastName = lastName;
         this.age = age;
     }
+
+    @Override
+    public String toString() {
+        return "('" + id + '\'' +
+                ", '" + firstName + '\'' +
+                ", '" + lastName + '\'' +
+                ", " + age +
+                ", '" + subject.getId() + '\'' +
+                ')';
+    }
 }
