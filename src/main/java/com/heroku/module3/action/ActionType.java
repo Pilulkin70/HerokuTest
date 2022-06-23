@@ -11,7 +11,7 @@ public enum ActionType {
     LECTURER_BY_FIRST_AND_LAST_NAME("Find a lecturer by first or last name",
             new FindLecturerByName()),
     WORST_AND_BEST_PERFORMING_SUBJECT("The subject with the worst and best performance",
-            new EmptyAction()),
+            new SubjectsWithMinAndMaxGPA()),
     STUDENTS_WITH_GPA_ABOVE_VALUE("Students whose GPA in a particular subject is above a given value",
             new StudentsWithGPAMoreThenValue()),
     EXIT("Exit",

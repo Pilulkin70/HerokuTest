@@ -20,9 +20,9 @@ package com.heroku.module3;
 На 10 - Приложение задеплоить на любой облачный сервис
 */
 
-import com.heroku.module3.action.ActionType;
 import com.heroku.module3.config.FlywayUtil;
 import com.heroku.module3.config.HibernateFactoryUtil;
+import com.heroku.module3.user.MainMenu;
 import com.heroku.module3.user.UserInputServices;
 
 public class Main {
@@ -34,22 +34,9 @@ public class Main {
     public static void main(String[] args) {
         HibernateFactoryUtil.init();
         FlywayUtil.migrate();
-        while (true) {
-            doAction();
-        }
-    }
 
-    private static void doAction() {
-        final ActionType[] values = ActionType.values();
-        int number;
-        do {
-            System.out.println("Choose your action: ");
-            for (int i = 0; i < values.length; i++) {
-                System.out.printf("%d) %s%n", i, values[i]);
-            }
-            number = INPUT_SERVICES.getNumberFromUser();
-        } while (number < 0 || number >= values.length);
-        final ActionType action = values[number];
-        action.doAction();
+        while (true) {
+            MainMenu.doAction();
+        }
     }
 }

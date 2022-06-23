@@ -33,33 +33,10 @@ public class Student {
     @OneToMany(mappedBy = "student", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Set<Grade> gradeSet;
 
-    public Student(String firstName, String lastName, int age, Date dateOfAdmission) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.dateOfAdmission = dateOfAdmission;
-    }
-
-/*    @Override
-    public String toString() {
-        return "Student{" +
-                "id='" + this.id + '\'' +
-                ", first name='" + this.firstName + '\'' +
-                ", last name='" + this.lastName + '\'' +
-                ", age=" + this.age +
-                ", dateOfAdmission=" + formatDate() +
-                '}';
-    }*/
-
     @Override
     public String toString() {
-        return "('" + id + '\'' +
-                ", '" + firstName + '\'' +
-                ", '" + lastName + '\'' +
-                ", " + age +
-                ", '" + formatDate() + '\'' +
-                ", '" + universityGroup.getId() + '\'' +
-                ')';
+        return String.format("Student%n First name: '%s'%n Last name: '%s'%n Age: %d%n Date of admission: %s%n",
+                this.firstName, this.lastName, this.age, formatDate());
     }
 
     private String formatDate() {

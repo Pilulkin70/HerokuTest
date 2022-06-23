@@ -22,19 +22,9 @@ public class Lecturer {
     @OneToOne
     private Subject subject;
 
-    public Lecturer(String firstName, String lastName, int age) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-    }
-
     @Override
     public String toString() {
-        return "('" + id + '\'' +
-                ", '" + firstName + '\'' +
-                ", '" + lastName + '\'' +
-                ", " + age +
-                ", '" + subject.getId() + '\'' +
-                ')';
+        return String.format("Lecturer%n First name: '%s'%n Last name: '%s'%n Age: %d%n",
+                this.firstName, this.lastName, this.age);
     }
 }

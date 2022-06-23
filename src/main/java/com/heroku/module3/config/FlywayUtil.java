@@ -4,14 +4,11 @@ import org.flywaydb.core.Flyway;
 
 public class FlywayUtil {
     public static void migrate() {
-        String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
-        String username = "postgres";
-        String password = "root";
+        DBCredentials dbCredentials = DBCredentials.getCredentials();
         Flyway flyway = Flyway.configure()
-                .dataSource(dbUrl, username, password)
+                .dataSource(dbCredentials.getDB_URL(), dbCredentials.getDB_USER(), dbCredentials.getDB_PASSWORD())
                 .baselineOnMigrate(true)
                 .locations("db/migration")
-//                .loadDefaultConfigurationFiles()     //default file name 'flyway.conf'
                 .load();
         flyway.clean();
         flyway.migrate();

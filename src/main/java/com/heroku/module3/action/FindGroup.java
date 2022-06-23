@@ -12,7 +12,7 @@ public class FindGroup implements Action {
 
     @Override
     public void doAction() {
-        String inputString = "";
+        String inputString;
         do {
             System.out.println("Input group name (or part of name): ");
             inputString = INPUT_SERVICES.getStringFromUser();

@@ -12,7 +12,7 @@ public class FindLecturerByName implements Action {
 
     @Override
     public void doAction() {
-        String inputString = "";
+        String inputString;
         do {
             System.out.println("Input first or last name: ");
             inputString = INPUT_SERVICES.getStringFromUser();
@@ -23,9 +23,7 @@ public class FindLecturerByName implements Action {
         if (lecturers.size() == 0) {
             System.out.println("is empty (");
         } else {
-            lecturers.forEach(lecturer -> {
-                System.out.println(lecturer);
-            });
+            lecturers.forEach(System.out::println);
         }
         System.out.println();
     }

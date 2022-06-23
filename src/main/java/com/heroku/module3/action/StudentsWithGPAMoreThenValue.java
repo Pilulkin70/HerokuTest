@@ -18,14 +18,14 @@ public class StudentsWithGPAMoreThenValue implements Action {
         final Subject subject = selectSubject();
         float minValue = inputValue();
 
-        System.out.printf("List of students, who GPA in '%s' is above %.2f%n", subject.getName(), minValue);
+        System.out.printf("List of students, who's GPA in '%s' is above %.2f%n", subject.getName(), minValue);
         List<Object[]> results = studentDao.getStudentInfo(subject.getId(), minValue);
         if (results.size() == 0) {
             System.out.println("is empty (");
         } else {
             results.forEach(result -> {
-                System.out.printf("  %s%n", studentDao.getById((String) result[0]));
-                System.out.printf("    %.2f%n", result[1]);
+                System.out.printf("   %s", studentDao.getById((String) result[0]));
+                System.out.printf(" Grade point average: %.2f%n%n", result[1]);
             });
         }
         System.out.println();
@@ -41,7 +41,7 @@ public class StudentsWithGPAMoreThenValue implements Action {
     }
 
     private Subject selectSubject() {
-        final ArrayList<Subject> subjects = new ArrayList<Subject>(subjectDao.getAll());
+        final ArrayList<Subject> subjects = new ArrayList<>(subjectDao.getAll());
         int number;
         do {
             System.out.println("Choose an subject: ");

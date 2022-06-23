@@ -6,20 +6,27 @@ import jakarta.persistence.EntityManager;
 
 import java.util.List;
 
-public class SubjectDao extends AbstractDao {
+public class SubjectDao extends AbstractDao<Subject> {
     @Override
     protected void init() {
         aClass = Subject.class;
     }
 
-    public List<Object[]> getSubjectMaxMinGPA() {
+    public List<Object[]> getSubjectsWithMaxGPA() {
         final EntityManager entityManager = HibernateFactoryUtil.getEntityManager();
-        final String sqlQuery = "SELECT subject.id, Avg(grade.value) " +
-                "FROM subject " +
-                "INNER JOIN grade " +
-                "ON subject.id = grade.subject_id " +
-                "GROUP BY subject.id " +
-                "ORDER BY Avg(grade.value)";
+        final String sqlQuery = "SELECT grade.subject_id, Avg(grade.value) " +
+                "FROM grade " +
+                "GROUP BY grade.subject_id " +
+                "HAVING Avg(grade.value) >= ALL(SELECT Avg(value) FROM grade GROUP BY subject_id)";
+        return entityManager.createNativeQuery(sqlQuery).getResultList();
+    }
+
+    public List<Object[]> getSubjectsWithMinGPA() {
+        final EntityManager entityManager = HibernateFactoryUtil.getEntityManager();
+        final String sqlQuery = "SELECT grade.subject_id, Avg(grade.value) " +
+                "FROM grade " +
+                "GROUP BY grade.subject_id " +
+                "HAVING Avg(grade.value) <= ALL(SELECT Avg(value) FROM grade GROUP BY subject_id)";
         return entityManager.createNativeQuery(sqlQuery).getResultList();
     }
 }

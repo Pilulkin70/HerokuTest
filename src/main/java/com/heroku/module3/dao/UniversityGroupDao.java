@@ -9,7 +9,7 @@ import jakarta.persistence.criteria.Root;
 
 import java.util.List;
 
-public class UniversityGroupDao extends AbstractDao {
+public class UniversityGroupDao extends AbstractDao<UniversityGroup> {
     @Override
     protected void init() {
         aClass = UniversityGroup.class;
@@ -27,7 +27,7 @@ public class UniversityGroupDao extends AbstractDao {
         return entityManager.createQuery(query).getResultList();
     }
 
-    public List<Object[]> getGroupGPA() {
+    public List<Object[]> getGroupsWithGPA() {
         final EntityManager entityManager = HibernateFactoryUtil.getEntityManager();
         final String sqlQuery = "SELECT universityGroup.id, universityGroup.name, Avg(grade.value) " +
                 "FROM (universityGroup " +

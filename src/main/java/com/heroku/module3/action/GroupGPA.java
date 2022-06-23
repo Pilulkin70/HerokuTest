@@ -8,9 +8,8 @@ public class GroupGPA implements Action {
     @Override
     public void doAction() {
         System.out.println("Grade point average (GPA) of each group");
-        universityGroupDao.getGroupGPA().forEach(result -> {
-            System.out.printf("Group '%s': GPA = %.2f %n", result[1], result[2]);
-        });
+        universityGroupDao.getGroupsWithGPA().forEach(result ->
+                System.out.printf("Group '%s': GPA = %.2f %n", result[1], result[2]));
         System.out.println();
     }
 }

@@ -25,17 +25,4 @@ public class Grade {
     private Subject subject;
 
     private int value;
-
-    public Grade(int value) {
-        this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return "('" + id + '\'' +
-                ", '" + student.getId() + '\'' +
-                ", '" + subject.getId() + '\'' +
-                ", " + value +
-                ')';
-    }
 }

@@ -1,7 +1,6 @@
 package com.heroku.module3.dao;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
@@ -17,15 +16,6 @@ abstract class AbstractDao<T> {
     }
 
     protected abstract void init();
-
-    public void save(T value) {
-        final EntityManager entityManager = HibernateFactoryUtil.getEntityManager();
-        final EntityTransaction transaction = entityManager.getTransaction();
-        transaction.begin();
-        entityManager.persist(value);
-        entityManager.flush();
-        transaction.commit();
-    }
 
     public T getById(String id) {
         final EntityManager entityManager = HibernateFactoryUtil.getEntityManager();
@@ -44,13 +34,4 @@ abstract class AbstractDao<T> {
         query.select(from);
         return entityManager.createQuery(query).getResultList();
     }
-
-/*    public void delete(T value) {
-        final EntityManager entityManager = HibernateFactoryUtil.getEntityManager();
-        final EntityTransaction entityTransaction = entityManager.getTransaction();
-        entityTransaction.begin();
-        entityManager.remove(value);
-        entityManager.flush();
-        entityTransaction.commit();
-    }*/
 }

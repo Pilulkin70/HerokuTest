@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Set;
@@ -23,14 +22,4 @@ public class UniversityGroup {
 
     @OneToMany(mappedBy = "universityGroup", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Set<Student> students;
-
-    public UniversityGroup(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "('" + id + '\'' +
-                ", '" + name + "')";
-    }
 }

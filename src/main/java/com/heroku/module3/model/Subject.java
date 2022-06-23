@@ -26,18 +26,4 @@ public class Subject {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lecturer_id")
     Lecturer lecturer;
-
-    public Subject(String code, String name) {
-        this.code = code;
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "('" + id + '\'' +
-                ", '" + code + '\'' +
-                ", '" + name + '\'' +
-                ", '" + lecturer.getId() + '\'' +
-                ')';
-    }
 }
